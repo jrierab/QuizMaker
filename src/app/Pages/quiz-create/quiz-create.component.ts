@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { TriviaCategory } from 'src/app/models/trivia-categories.model';
 import { OpenTriviaDbService } from 'src/app/services/open-trivia-db.service';
-import { NgForm } from '@angular/forms';
 import { DifficultyLevels } from 'src/app/models/difficulty-levels.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-create',
@@ -18,7 +18,7 @@ export class QuizCreateComponent {
 
   difficulty : DifficultyLevels = DifficultyLevels.Easy;
   
-  constructor(private triviaService: OpenTriviaDbService) {}
+  constructor(private router: Router, private triviaService: OpenTriviaDbService) {}
 
   ngOnInit() {
     this.triviaService.getTriviaCategories().subscribe(data => {
@@ -28,5 +28,9 @@ export class QuizCreateComponent {
 
   OnCreateQuiz() {
     console.log('Category:', this.selectedCategoryId, this.difficulty);
+    this.router.navigate(
+      ['/quiz-questions'],
+      { queryParams: { category: this.selectedCategoryId, difficulty: this.difficulty } }
+    );
   }
 }

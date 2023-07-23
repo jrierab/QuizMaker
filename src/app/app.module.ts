@@ -8,13 +8,17 @@ import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.co
 import { QuizCreateComponent } from './Pages/quiz-create/quiz-create.component';
 import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
+import { QuestionCardComponent } from './components/question-card/question-card.component';
+import { AnswerButtonComponent } from './components/answer-button/answer-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizCreateComponent,
     QuizQuestionsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    QuestionCardComponent,
+    AnswerButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,12 @@
-<p>quiz-questions works!</p>
+<div *ngFor="let result of questionList; index as i">
+    <app-question-card 
+        [question]="result.question"
+        [answer]="result.correct_answer"
+        [others]="result.incorrect_answers"
+        [showSolution]="showSolution"
+        (isAnswered)="onIsQuestionAnswered(i)"
+    >
+    </app-question-card>
+</div>
+
+<button *ngIf="isQuizReady && !showSolution" type="button" (click)="onSubmit()">Submit</button>

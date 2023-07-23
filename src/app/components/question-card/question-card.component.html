@@ -1,0 +1,11 @@
+<h2>{{ question }}</h2>
+
+<app-answer-button 
+    *ngFor="let answer of answerList; index as i"
+    [answer]="answer.answer"
+    [isSelected]="answer.isSelected"
+    [showSolution]="showSolution"
+    [isCorrect]="showSolution && answer.isCorrect"
+    (answerSelected)="onAnswerSelected(i)"
+    >
+</app-answer-button>
