@@ -4,3 +4,9 @@
 .is-error {
     background-color: red;
 }
+:not(button.is-showing-solution,button.is-selected):hover {
+    background-color: aquamarine;
+  }
+:not(button.is-showing-solution):hover {
+    cursor: pointer;
+}

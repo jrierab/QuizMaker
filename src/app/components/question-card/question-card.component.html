@@ -1,4 +1,4 @@
-<h2>{{ question }}</h2>
+<h2 [innerHtml]="question"></h2>
 
 <app-answer-button 
     *ngFor="let answer of answerList; index as i"

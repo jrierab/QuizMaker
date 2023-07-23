@@ -29,7 +29,7 @@ export class QuizQuestionsComponent {
 
     this.triviaService.getTriviaQuestion(this.category as number, this.difficulty as string, this.numQuestions).subscribe(data => {
       this.questionList = data.results ?? [];
-      console.log(data);
+      console.log(this.questionList);
     });
   }
 

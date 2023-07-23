@@ -14,6 +14,8 @@ export class AnswerButtonComponent {
   @Output() answerSelected : EventEmitter<void> = new EventEmitter();
 
   onAnswerClicked() {
-    this.answerSelected.emit();
+    if(!this.showSolution) {
+      this.answerSelected.emit();
+    }
   }
 }
