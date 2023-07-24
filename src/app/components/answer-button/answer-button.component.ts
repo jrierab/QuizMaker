@@ -13,6 +13,11 @@ export class AnswerButtonComponent {
 
   @Output() answerSelected : EventEmitter<void> = new EventEmitter();
 
+  /**
+   * Event is emit only if not showing the solution already
+   *
+   * @memberof AnswerButtonComponent
+   */
   onAnswerClicked() {
     if(!this.showSolution) {
       this.answerSelected.emit();

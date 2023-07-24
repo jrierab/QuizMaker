@@ -17,17 +17,26 @@ export class QuizCreateComponent {
   DifficultyLevels = DifficultyLevels;
 
   difficulty : DifficultyLevels = DifficultyLevels.Easy;
-  
+
   constructor(private router: Router, private triviaService: OpenTriviaDbService) {}
 
+  /**
+   * Recover categories from service
+   *
+   * @memberof QuizCreateComponent
+   */
   ngOnInit() {
     this.triviaService.getTriviaCategories().subscribe(data => {
       this.categories = data.trivia_categories ?? [];
     });
   }
 
+  /**
+   * Goto quiz page with selected options (as queryParams)
+   *
+   * @memberof QuizCreateComponent
+   */
   OnCreateQuiz() {
-    console.log('Category:', this.selectedCategoryId, this.difficulty);
     this.router.navigate(
       ['/quiz-questions'],
       { queryParams: { category: this.selectedCategoryId, difficulty: this.difficulty } }

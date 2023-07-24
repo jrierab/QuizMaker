@@ -17,13 +17,21 @@ export class QuestionCardComponent {
   answerList : Array<AnswerButton> = [];
 
   ngOnInit() {
+    // Calcs correct answer position in choices
     const answerPos = this.choices.findIndex((option)=> option===this.answer);
+    // Initialization of buttons status
     this.answerList = this.choices.map((option: string, pos: number) => ({
         label: option, isCorrect: option===this.correctAnswer, isSelected: pos===answerPos
       }
     ));
   }
 
+  /**
+   * We de-select others (previous answer, if any) and select current answer
+   *
+   * @param {number} pos
+   * @memberof QuestionCardComponent
+   */
   onAnswerSelected(pos: number) {
     this.answerList.forEach((answer, i) => answer.isSelected = (i===pos));
     this.isAnswered.emit(this.choices[pos]);

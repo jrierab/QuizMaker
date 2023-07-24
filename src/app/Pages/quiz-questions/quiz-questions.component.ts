@@ -26,14 +26,13 @@ export class QuizQuestionsComponent {
   constructor(private route: ActivatedRoute, private router: Router, private triviaService: OpenTriviaDbService) {}
 
   ngOnInit() {
+    // Recovering navigation options
     this.category = this.route.snapshot.queryParams['category'];
     this.difficulty = this.route.snapshot.queryParams['difficulty'];
     this.showSolution = this.route.snapshot.data['showSolution'];
 
-    console.log(this.showSolution);
-
+    // If showing results...
     if (this.showSolution) {
-      console.log('history', history.state);
       this.questionList =  history.state['questionList'];
       // In case of some navigation error, goto home
       if (!this.questionList || this.questionList.length===0) {
@@ -41,7 +40,9 @@ export class QuizQuestionsComponent {
       } else {
         this.numOk = this.questionList.reduce((n, question) => n + (question.answer===question.correct_answer ? 1: 0), 0);
       }
+
     } else {
+      // If asking questions...
       // In case of some navigation error, goto home
       if (!this.difficulty || !this.category) {
         this.gotoHome();
@@ -51,7 +52,6 @@ export class QuizQuestionsComponent {
         this.questionList.forEach((question) => {
           question.choices = [question.correct_answer, ...question.incorrect_answers].sort(() => Math.random() - 0.5);
         });
-        console.log(this.questionList);
       });
     }
   }
