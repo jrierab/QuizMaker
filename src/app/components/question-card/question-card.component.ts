@@ -8,22 +8,24 @@ import { AnswerButton } from 'src/app/models/answer-button.model';
 })
 export class QuestionCardComponent {
   @Input() question!: string;
+  @Input() choices!: Array<string>;
   @Input() answer!: string;
-  @Input() others!: Array<string>;
+  @Input() correctAnswer!: string;
   @Input() showSolution!: boolean;
-  @Output() isAnswered = new EventEmitter<void>();
+  @Output() isAnswered = new EventEmitter<string>();
 
   answerList : Array<AnswerButton> = [];
 
   ngOnInit() {
-    this.answerList = [this.answer, ...this.others].sort(() => Math.random() - 0.5).map((sAnswer: string) => ({
-        answer: sAnswer, isCorrect: sAnswer===this.answer, isSelected: false
+    const answerPos = this.choices.findIndex((option)=> option===this.answer);
+    this.answerList = this.choices.map((option: string, pos: number) => ({
+        label: option, isCorrect: option===this.correctAnswer, isSelected: pos===answerPos
       }
     ));
   }
 
   onAnswerSelected(pos: number) {
     this.answerList.forEach((answer, i) => answer.isSelected = (i===pos));
-    this.isAnswered.emit();
+    this.isAnswered.emit(this.choices[pos]);
   }
 }

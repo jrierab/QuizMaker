@@ -1,10 +1,10 @@
-<button 
+<button
     type="button"
     (click)="onAnswerClicked()"
     [class.is-selected]="(!showSolution && isSelected) || (showSolution && isCorrect)"
     [class.is-error]="showSolution && isSelected && !isCorrect"
     [class.is-showing-solution]="showSolution"
-    [innerHtml]="answer"
+    [innerHtml]="label"
     >
 </button>
 

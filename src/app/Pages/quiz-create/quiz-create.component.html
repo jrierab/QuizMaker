@@ -1,13 +1,19 @@
-<label for="category-select">Choose a category: </label>
+<div>
+  <div class="select-container">
+    <label for="category-select">Choose a category: </label>
 
-<select name="category" class="form-control" [(ngModel)]="selectedCategoryId" id="category-select">
-    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
-</select>
+    <select name="category" class="form-control" [(ngModel)]="selectedCategoryId" id="category-select">
+        <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+    </select>
+  </div>
 
-<label for="difficulty-select">Choose a difficulty level: </label>
+  <div class="select-container">
+    <label for="difficulty-select">Choose a difficulty level: </label>
 
-<select name="difficulty" class="form-control" [(ngModel)]="difficulty" id="difficulty-select">
-    <option *ngFor="let level of DifficultyLevels | keyvalue" [value]="level.value">{{ level.value }}</option>
-</select>
+    <select name="difficulty" class="form-control" [(ngModel)]="difficulty" id="difficulty-select">
+        <option *ngFor="let level of DifficultyLevels | keyvalue" [value]="level.value">{{ level.value }}</option>
+    </select>
+  </div>
+</div>
 
-<button id="create-btn" type="button" (click)="OnCreateQuiz()" [disabled]="!selectedCategoryId">Create</button>
+<button *ngIf="selectedCategoryId" id="create-btn" type="button" class="user-action" (click)="OnCreateQuiz()">Create</button>

@@ -11,4 +11,6 @@ export interface TriviaQuestion {
   correct_answer: string;
   incorrect_answers: string[];
   isAnswered?: boolean;
+  choices?: string[];
+  answer?: string;
 }

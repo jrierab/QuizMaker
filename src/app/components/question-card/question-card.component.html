@@ -1,11 +1,11 @@
-<h2 [innerHtml]="question"></h2>
+<h3 [innerHtml]="question"></h3>
 
-<app-answer-button 
-    *ngFor="let answer of answerList; index as i"
-    [answer]="answer.answer"
-    [isSelected]="answer.isSelected"
+<app-answer-button
+    *ngFor="let option of answerList; index as i"
+    [label]="option.label"
+    [isSelected]="option.isSelected"
     [showSolution]="showSolution"
-    [isCorrect]="showSolution && answer.isCorrect"
+    [isCorrect]="showSolution && option.isCorrect"
     (answerSelected)="onAnswerSelected(i)"
     >
 </app-answer-button>

@@ -1,5 +1,5 @@
 export interface AnswerButton {
-    answer : string;
+    label : string;
     isSelected : boolean;
     isCorrect : boolean;
 }

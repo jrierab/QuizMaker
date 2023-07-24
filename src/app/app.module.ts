@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.com
 import { FormsModule } from '@angular/forms';
 import { QuestionCardComponent } from './components/question-card/question-card.component';
 import { AnswerButtonComponent } from './components/answer-button/answer-button.component';
+import { ScoreDirective } from './directives/score.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AnswerButtonComponent } from './components/answer-button/answer-button.
     QuizQuestionsComponent,
     PageNotFoundComponent,
     QuestionCardComponent,
-    AnswerButtonComponent
+    AnswerButtonComponent,
+    ScoreDirective
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,21 @@
+<ng-container *ngIf="!showSolution; then showQuestions; else showResults"></ng-container>
+<ng-template #showQuestions><h2>Questions</h2></ng-template>
+<ng-template #showResults><h2>Results</h2></ng-template>
+
 <div *ngFor="let result of questionList; index as i">
-    <app-question-card 
+    <app-question-card
         [question]="result.question"
-        [answer]="result.correct_answer"
-        [others]="result.incorrect_answers"
+        [answer]="result.answer || ''"
+        [correctAnswer]="result.correct_answer || ''"
+        [choices]="result.choices || []"
         [showSolution]="showSolution"
-        (isAnswered)="onIsQuestionAnswered(i)"
+        (isAnswered)="onIsQuestionAnswered($event, i)"
     >
     </app-question-card>
 </div>
 
-<button *ngIf="isQuizReady && !showSolution" type="button" (click)="onSubmit()">Submit answers</button>
+<div *ngIf="showSolution" class="score" [appScore]="numOk">You scored {{ numOk }} of out of {{ numQuestions }}</div>
+
+<button *ngIf="isQuizReady && !showSolution" type="button" class="user-action" (click)="onSubmit()">Submit answers</button>
+
+<button *ngIf="showSolution" type="button" class="user-action" (click)="gotoHome()">Create a new quiz</button>

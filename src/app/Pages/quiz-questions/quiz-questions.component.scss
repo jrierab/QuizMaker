@@ -2,4 +2,16 @@ button {
     padding: 25px;
     margin: 25px;
     font-size: x-large;
+
+    &.all-width {
+      width: calc(100% - 50px);
+    }
+}
+
+.score {
+  font-size: x-large;
+  text-align: center;
+  width: calc(80% - 20px);
+  margin: 25px 10%;
+  padding: 10px;
 }

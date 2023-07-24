@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./answer-button.component.scss']
 })
 export class AnswerButtonComponent {
-  @Input() answer! : string;
+  @Input() label! : string;
   @Input() isSelected! : boolean;
   @Input() isCorrect! : boolean;
   @Input() showSolution!: boolean;

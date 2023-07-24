@@ -7,7 +7,8 @@ import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.com
 const routes: Routes = [
   { path: '',   redirectTo: '/quiz-create', pathMatch: 'full' },
   { path: 'quiz-create', component: QuizCreateComponent },
-  { path: 'quiz-questions', component: QuizQuestionsComponent },
+  { path: 'quiz-questions', component: QuizQuestionsComponent, data: {showSolution: false} },
+  { path: 'quiz-solutions', component: QuizQuestionsComponent, data: {showSolution: true} },
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
