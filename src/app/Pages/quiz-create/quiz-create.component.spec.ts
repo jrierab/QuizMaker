@@ -1,21 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AppModule } from 'src/app/app.module';
 import { QuizCreateComponent } from './quiz-create.component';
+import { MockBuilder, MockRender } from 'ng-mocks';
+import { OpenTriviaDbService } from 'src/app/services/open-trivia-db.service';
+import { of } from 'rxjs';
 
 describe('QuizCreateComponent', () => {
-  let component: QuizCreateComponent;
-  let fixture: ComponentFixture<QuizCreateComponent>;
-
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [QuizCreateComponent]
-    });
-    fixture = TestBed.createComponent(QuizCreateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    return MockBuilder(QuizCreateComponent, AppModule).mock(OpenTriviaDbService, {getTriviaCategories: () => of([])} as unknown as OpenTriviaDbService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('asserts creation of QuizCreateComponent', () => {
+    const fixture = MockRender(QuizCreateComponent);
+    expect(fixture).toBeDefined();
   });
 });

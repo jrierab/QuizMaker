@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-
+import { HttpClient } from '@angular/common/http';
 import { OpenTriviaDbService } from './open-trivia-db.service';
+import { MockBuilder, MockRender } from 'ng-mocks';
 
 describe('OpenTriviaDbService', () => {
-  let service: OpenTriviaDbService;
-
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(OpenTriviaDbService);
+    return MockBuilder(OpenTriviaDbService, HttpClient);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('asserts creation of OpenTriviaDbService', () => {
+    // Creates an instance only if all dependencies are present.
+    const service = MockRender(OpenTriviaDbService).point.componentInstance;
+
+    expect((service as any).openTriviaDbUrl).toEqual('https://opentdb.com');
   });
 });
